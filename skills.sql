@@ -2,15 +2,34 @@
 -- for the most explanatory version of each question.
 
 -- 1. Select all columns for all brands in the Brands table.
+sqlite> SELECT *
+   ...> FROM Brands;
+
 
 -- 2. Select all columns for all car models made by Pontiac in the Models table.
+sqlite> SELECT *
+   ...> From Models
+   ...> WHERE brand_name = 'Pontiac';
+
 
 -- 3. Select the brand name and model 
---    name for all models made in 1964 from the Models table.
+--    name for all models made in 1964 from the Models table
+sqlite> SELECT brand_name, name
+   ...> FROM Models
+   ...> WHERE year = 1964;
 
 
 -- 4. Select the model name, brand name, and headquarters for the Ford Mustang 
 --    from the Models and Brands tables.
+sqlite> SELECT m.name, m.brand_name, b.headquarters
+   ...> FROM Models AS m
+   ...> JOIN Brands as b ON (m.brand_name = b.name)
+   ...> WHERE
+   ...>     m.name = 'Mustang'
+   ...>     AND
+   ...>     m.brand_name = 'Ford';
+
+
 
 -- 5. Select all rows for the three oldest brands 
 --    from the Brands table (Hint: you can use LIMIT and ORDER BY).
